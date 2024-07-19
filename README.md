@@ -1,55 +1,33 @@
-# crowdfunding-cardano
+# Cardano Crowdfunding Project
 
-Write validators in the `validators` folder, and supporting functions in the `lib` folder using `.ak` as a file extension.
+This project demonstrates a simple crowdfunding application on the Cardano blockchain using Aiken-lang.
 
-For example, as `validators/always_true.ak`
+## Project Structure
 
-```gleam
-validator {
-  fn spend(_datum: Data, _redeemer: Data, _context: Data) -> Bool {
-    True
-  }
-}
-```
+- `validators/`: Contains the Aiken-lang smart contract.
+- `test/`: Contains test scripts for the smart contract.
+- `scripts/`: Contains scripts for deploying and interacting with the smart contract.
 
-## Building
+## Usage
 
-```sh
-aiken build
-```
+1. **Deploy the Smart Contract**:
+    ```bash
+    ./scripts/deploy_contract.sh
+    ```
+
+2. **Interact with the Smart Contract**:
+    ```bash
+    ./scripts/interact_contract.sh
+    ```
+
+## Smart Contract Functions
+
+- `createProposal(proposalId: Int, deadline: Timestamp, goal: Value)`: Creates a new proposal.
+- `fundProposal(proposalId: Int)`: Funds a proposal.
+- `finalizeProposal(proposalId: Int)`: Finalizes a proposal and distributes funds.
 
 ## Testing
 
-You can write tests in any module using the `test` keyword. For example:
-
-```gleam
-test foo() {
-  1 + 1 == 2
-}
-```
-
-To run all tests, simply do:
-
-```sh
-aiken check
-```
-
-To run only tests matching the string `foo`, do:
-
-```sh
-aiken check -m foo
-```
-
-## Documentation
-
-If you're writing a library, you might want to generate an HTML documentation for it.
-
-Use:
-
-```sh
-aiken docs
-```
-
-## Resources
-
-Find more on the [Aiken's user manual](https://aiken-lang.org).
+Run the tests using the Aiken-lang testing framework:
+```bash
+aiken test
